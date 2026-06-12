@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Aakash Sheladiya — AI Systems Builder</title>
+  <meta name="description" content="AI Developer building production tools with Claude API, GPT-4o, and modern full-stack tech. Open source contributor. Ships in days, not months." />
+  <meta property="og:title" content="Aakash Sheladiya — AI Systems Builder" />
+  <meta property="og:description" content="Building AI tools that real teams use every day." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --bg: #0a0a0f;
+      --surface: #13131a;
+      --surface2: #1c1c26;
+      --border: #2a2a38;
+      --text: #e8e8f0;
+      --muted: #7a7a9a;
+      --accent: #6366f1;
+      --accent2: #8b5cf6;
+      --green: #22c55e;
+      --yellow: #eab308;
+      --radius: 12px;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+
+    /* ── NAV ── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      display: flex; justify-content: space-between; align-items: center;
+      padding: 16px 40px;
+      background: rgba(10,10,15,0.85);
+      backdrop-filter: blur(12px);
+      border-bottom: 1px solid var(--border);
+    }
+    .nav-logo { font-weight: 700; font-size: 1rem; letter-spacing: -0.3px; }
+    .nav-logo span { color: var(--accent); }
+    .nav-links { display: flex; gap: 28px; font-size: 0.875rem; color: var(--muted); }
+    .nav-links a:hover { color: var(--text); }
+    .nav-cta {
+      background: var(--accent); color: #fff;
+      padding: 8px 18px; border-radius: 8px; font-size: 0.85rem; font-weight: 600;
+      transition: opacity 0.2s;
+    }
+    .nav-cta:hover { opacity: 0.85; }
+
+    /* ── HERO ── */
+    .hero {
+      min-height: 100vh;
+      display: flex; flex-direction: column; justify-content: center; align-items: center;
+      text-align: center;
+      padding: 120px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute; inset: 0;
+      background: radial-gradient(ellipse 70% 60% at 50% 40%, rgba(99,102,241,0.12), transparent);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex; align-items: center; gap: 7px;
+      border: 1px solid var(--border); border-radius: 100px;
+      padding: 6px 14px; font-size: 0.78rem; color: var(--muted); margin-bottom: 28px;
+      background: var(--surface);
+    }
+    .hero-badge .dot { width: 7px; height: 7px; border-radius: 50%; background: var(--green); animation: pulse 2s infinite; }
+    @keyframes pulse { 0%,100%{opacity:1} 50%{opacity:0.4} }
+    .hero h1 {
+      font-size: clamp(2.4rem, 6vw, 4.2rem);
+      font-weight: 800; letter-spacing: -1.5px; line-height: 1.1;
+      max-width: 820px; margin-bottom: 22px;
+    }
+    .hero h1 em { font-style: normal; color: var(--accent); }
+    .hero .sub {
+      font-size: clamp(1rem, 2vw, 1.2rem); color: var(--muted);
+      max-width: 560px; margin-bottom: 38px; line-height: 1.65;
+    }
+    .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: center; }
+    .btn {
+      padding: 13px 26px; border-radius: 10px; font-size: 0.92rem; font-weight: 600;
+      cursor: pointer; transition: all 0.2s;
+    }
+    .btn-primary { background: var(--accent); color: #fff; }
+    .btn-primary:hover { background: #4f52d9; transform: translateY(-1px); }
+    .btn-secondary { background: var(--surface2); color: var(--text); border: 1px solid var(--border); }
+    .btn-secondary:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    .stats {
+      display: flex; gap: 40px; justify-content: center; flex-wrap: wrap;
+      margin-top: 64px; padding-top: 40px; border-top: 1px solid var(--border);
+      width: 100%; max-width: 700px;
+    }
+    .stat-item { text-align: center; }
+    .stat-num { font-size: 1.8rem; font-weight: 800; color: var(--text); letter-spacing: -1px; }
+    .stat-label { font-size: 0.78rem; color: var(--muted); margin-top: 2px; }
+
+    /* ── SECTION WRAPPER ── */
+    .section { padding: 80px 24px; max-width: 1100px; margin: 0 auto; }
+    .section-label {
+      font-size: 0.75rem; font-weight: 700; letter-spacing: 1.5px;
+      text-transform: uppercase; color: var(--accent); margin-bottom: 10px;
+    }
+    .section-title {
+      font-size: clamp(1.6rem, 3vw, 2.2rem); font-weight: 800;
+      letter-spacing: -0.5px; margin-bottom: 10px;
+    }
+    .section-desc { color: var(--muted); max-width: 560px; margin-bottom: 44px; }
+
+    /* ── LIVE PROJECTS ── */
+    .live-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(310px, 1fr)); gap: 20px; }
+    .live-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 28px;
+      transition: border-color 0.2s, transform 0.2s;
+      position: relative; overflow: hidden;
+    }
+    .live-card:hover { border-color: var(--accent); transform: translateY(-3px); }
+    .live-card::before {
+      content: '';
+      position: absolute; top: 0; left: 0; right: 0; height: 3px;
+      background: linear-gradient(90deg, var(--accent), var(--accent2));
+      opacity: 0; transition: opacity 0.2s;
+    }
+    .live-card:hover::before { opacity: 1; }
+    .card-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 12px; }
+    .card-icon { font-size: 1.6rem; }
+    .card-status {
+      font-size: 0.7rem; font-weight: 600; padding: 3px 9px; border-radius: 100px;
+      background: rgba(34,197,94,0.15); color: var(--green); border: 1px solid rgba(34,197,94,0.3);
+    }
+    .card-title { font-size: 1.05rem; font-weight: 700; margin-bottom: 6px; }
+    .card-url { font-size: 0.78rem; color: var(--accent); font-family: 'JetBrains Mono', monospace; margin-bottom: 10px; }
+    .card-desc { font-size: 0.88rem; color: var(--muted); line-height: 1.6; margin-bottom: 14px; }
+    .card-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+    .tag {
+      font-size: 0.72rem; padding: 3px 9px; border-radius: 6px;
+      background: var(--surface2); border: 1px solid var(--border);
+      color: var(--muted); font-family: 'JetBrains Mono', monospace;
+    }
+
+    /* ── OSS ── */
+    .oss-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(290px, 1fr)); gap: 16px; }
+    .oss-card {
+      background: var(--surface); border: 1px solid var(--border);
+      border-radius: var(--radius); padding: 22px;
+      transition: border-color 0.2s, transform 0.2s;
+      display: flex; flex-direction: column;
+    }
+    .oss-card:hover { border-color: var(--accent); transform: translateY(-2px); }
+    .oss-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+    .oss-icon {
+      width: 36px; height: 36px; border-radius: 8px;
+      background: var(--surface2); display: flex; align-items: center; justify-content: center;
+      font-size: 1rem; flex-shrink: 0;
+    }
+    .oss-name { font-weight: 700; font-size: 0.95rem; }
+    .oss-stars { font-size: 0.75rem; color: var(--yellow); }
+    .oss-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.55; margin-bottom: 14px; flex: 1; }
+    .oss-footer { display: flex; justify-content: space-between; align-items: center; }
+    .oss-lang {
+      font-size: 0.72rem; font-family: 'JetBrains Mono', monospace;
+      color: var(--muted); display: flex; align-items: center; gap: 5px;
+    }
+    .lang-dot { width: 8px; height: 8px; border-radius: 50%; }
+    .lang-py { background: #3572a5; }
+    .lang-ts { background: #2b7489; }
+    .lang-js { background: #f1e05a; }
+    .oss-link {
+      font-size: 0.75rem; color: var(--accent); font-weight: 600;
+      display: flex; align-items: center; gap: 4px;
+    }
+    .oss-link:hover { text-decoration: underline; }
+
+    /* ── STACK ── */
+    .stack-section { background: var(--surface); border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); padding: 60px 24px; }
+    .stack-inner { max-width: 1100px; margin: 0 auto; }
+    .stack-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 24px; margin-top: 40px; }
+    .stack-group h3 { font-size: 0.75rem; font-weight: 700; letter-spacing: 1px; text-transform: uppercase; color: var(--muted); margin-bottom: 12px; }
+    .stack-items { display: flex; flex-direction: column; gap: 8px; }
+    .stack-item {
+      display: flex; align-items: center; gap: 10px;
+      padding: 9px 12px; background: var(--surface2);
+      border: 1px solid var(--border); border-radius: 8px;
+      font-size: 0.85rem; font-weight: 500;
+    }
+    .stack-item .si { font-size: 1.1rem; }
+
+    /* ── TIMELINE ── */
+    .timeline { position: relative; padding-left: 28px; }
+    .timeline::before {
+      content: ''; position: absolute; left: 8px; top: 6px; bottom: 6px;
+      width: 2px; background: var(--border);
+    }
+    .tl-item { position: relative; margin-bottom: 32px; }
+    .tl-dot {
+      position: absolute; left: -24px; top: 4px;
+      width: 12px; height: 12px; border-radius: 50%;
+      background: var(--accent); border: 2px solid var(--bg);
+    }
+    .tl-period { font-size: 0.75rem; color: var(--muted); font-family: 'JetBrains Mono', monospace; margin-bottom: 4px; }
+    .tl-title { font-weight: 700; font-size: 0.98rem; margin-bottom: 2px; }
+    .tl-sub { font-size: 0.83rem; color: var(--accent); margin-bottom: 8px; }
+    .tl-desc { font-size: 0.84rem; color: var(--muted); line-height: 1.6; }
+
+    /* ── CONTACT ── */
+    .contact-section {
+      background: var(--surface);
+      border-top: 1px solid var(--border);
+      padding: 80px 24px; text-align: center;
+    }
+    .contact-inner { max-width: 600px; margin: 0 auto; }
+    .contact-links { display: flex; justify-content: center; gap: 16px; flex-wrap: wrap; margin-top: 32px; }
+    .contact-link {
+      display: flex; align-items: center; gap: 8px;
+      padding: 11px 20px; border-radius: 10px;
+      background: var(--surface2); border: 1px solid var(--border);
+      font-size: 0.85rem; font-weight: 500;
+      transition: all 0.2s;
+    }
+    .contact-link:hover { border-color: var(--accent); transform: translateY(-1px); }
+
+    /* ── FOOTER ── */
+    footer {
+      border-top: 1px solid var(--border); padding: 24px;
+      text-align: center; font-size: 0.78rem; color: var(--muted);
+    }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 640px) {
+      nav { padding: 14px 20px; }
+      .nav-links { display: none; }
+      .hero { padding: 100px 20px 60px; }
+      .stats { gap: 24px; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ── NAV ── -->
+<nav>
+  <div class="nav-logo">Aakash <span>Sheladiya</span></div>
+  <div class="nav-links">
+    <a href="#projects">Projects</a>
+    <a href="#opensource">Open Source</a>
+    <a href="#stack">Stack</a>
+    <a href="#experience">Experience</a>
+  </div>
+  <a class="nav-cta btn" href="mailto:sheladiyaaakash123@gmail.com">Hire Me</a>
+</nav>
+
+<!-- ── HERO ── -->
+<section class="hero">
+  <div class="hero-badge">
+    <span class="dot"></span>
+    Available for new opportunities
+  </div>
+  <h1>I build <em>AI tools</em> that teams actually use</h1>
+  <p class="sub">
+    AI Developer &amp; Automation Specialist. 4+ years shipping production systems with Claude API,
+    GPT-4o, Make, and n8n. From idea to live product — in days, not months.
+  </p>
+  <div class="hero-actions">
+    <a class="btn btn-primary" href="#projects">See Live Projects</a>
+    <a class="btn btn-secondary" href="https://github.com/aakash-code" target="_blank">GitHub →</a>
+  </div>
+  <div class="stats">
+    <div class="stat-item">
+      <div class="stat-num">200k+</div>
+      <div class="stat-label">Users on live systems</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">12</div>
+      <div class="stat-label">Modules in production AI OS</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">50+</div>
+      <div class="stat-label">Public repositories</div>
+    </div>
+    <div class="stat-item">
+      <div class="stat-num">1.5yr</div>
+      <div class="stat-label">Claude API in production</div>
+    </div>
+  </div>
+</section>
+
+<!-- ── LIVE PROJECTS ── -->
+<div id="projects" class="section">
+  <div class="section-label">Live Projects</div>
+  <div class="section-title">Production apps I've shipped</div>
+  <p class="section-desc">Real tools used by real people every day. Not demos — production systems with live users.</p>
+
+  <div class="live-grid">
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">🏛️</div>
+        <span class="card-status">● Live</span>
+      </div>
+      <div class="card-title">SGVP Management System</div>
+      <div class="card-url">sgvp.app</div>
+      <div class="card-desc">
+        12-module AI Operating System for an organisation with 200,000+ contacts. Covers event scheduling,
+        workforce coordination, accommodation management, multi-channel comms (WhatsApp, Telegram, Email, SMS),
+        and executive reporting dashboards. Built with Claude Code — 134,000+ lines, shipped in 3 weeks.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Claude Code</span>
+        <span class="tag">Claude API</span>
+        <span class="tag">React</span>
+        <span class="tag">Node.js</span>
+        <span class="tag">MySQL</span>
+        <span class="tag">WhatsApp API</span>
+      </div>
+    </div>
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">🛒</div>
+        <span class="card-status">● Live</span>
+      </div>
+      <div class="card-title">Freshmor</div>
+      <div class="card-url">freshmor.in</div>
+      <div class="card-desc">
+        B2B/B2C e-commerce platform for a tissue paper and hygiene product manufacturer.
+        Product catalogue, bulk ordering system, quote flows, partner onboarding, and industry-specific
+        pricing for hotels, hospitals, restaurants, and airlines. Full UX and backend ownership.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Next.js</span>
+        <span class="tag">TypeScript</span>
+        <span class="tag">PostgreSQL</span>
+        <span class="tag">Tailwind CSS</span>
+        <span class="tag">REST APIs</span>
+      </div>
+    </div>
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">🌿</div>
+        <span class="card-status">● Live</span>
+      </div>
+      <div class="card-title">Spoonly</div>
+      <div class="card-url">spoonly.in</div>
+      <div class="card-desc">
+        Eco-friendly paper cutlery brand with a full-stack manufacturing operations platform behind it —
+        inventory, production tracking, distribution, financial reporting, and billing automation.
+        Replaced entirely manual processes across the business.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Full-stack</span>
+        <span class="tag">Python</span>
+        <span class="tag">FastAPI</span>
+        <span class="tag">React</span>
+        <span class="tag">Automation</span>
+      </div>
+    </div>
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">🤖</div>
+        <span class="card-status">● Production</span>
+      </div>
+      <div class="card-title">Nivas Realty AI Pipeline</div>
+      <div class="card-url">Claude API · WhatsApp · CRM</div>
+      <div class="card-desc">
+        LLM-powered call management workflow used by 45+ real estate agents daily.
+        Every call captured → Claude API extracts structured data → personalised WhatsApp follow-up
+        triggered automatically by CRM pipeline stage. Agents saved 45–60 minutes per day.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Claude API</span>
+        <span class="tag">Zapier</span>
+        <span class="tag">WhatsApp API</span>
+        <span class="tag">Python</span>
+        <span class="tag">CRM Webhooks</span>
+      </div>
+    </div>
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">💬</div>
+        <span class="card-status">● Open Source</span>
+      </div>
+      <div class="card-title">WACRM</div>
+      <div class="card-url">github.com/aakash-code/wacrm</div>
+      <div class="card-desc">
+        Self-hostable WhatsApp CRM — shared inbox with multi-agent support, contact management,
+        Kanban sales pipeline, broadcast messaging with delivery tracking, and a visual automation
+        builder. Built on Next.js 16, React 19, and Supabase. Full code ownership.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Next.js 16</span>
+        <span class="tag">React 19</span>
+        <span class="tag">Supabase</span>
+        <span class="tag">Meta API</span>
+        <span class="tag">TypeScript</span>
+      </div>
+    </div>
+
+    <div class="live-card">
+      <div class="card-top">
+        <div class="card-icon">📊</div>
+        <span class="card-status">● Live</span>
+      </div>
+      <div class="card-title">OpenQuest</div>
+      <div class="card-url">github.com/aakash-code/openquest</div>
+      <div class="card-desc">
+        Realtime stock data aggregator with QuestDB and TradingView streaming charts.
+        Ingests live market feeds, stores time-series data at scale, and streams real-time
+        candlestick and indicator data directly to a browser-based chart interface.
+      </div>
+      <div class="card-tags">
+        <span class="tag">Python</span>
+        <span class="tag">QuestDB</span>
+        <span class="tag">TradingView</span>
+        <span class="tag">WebSocket</span>
+        <span class="tag">Real-time</span>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── OPEN SOURCE ── -->
+<div id="opensource" class="section">
+  <div class="section-label">Open Source</div>
+  <div class="section-title">Public repositories</div>
+  <p class="section-desc">Tools I've open-sourced — built to solve real problems in fintech, automation, and AI.</p>
+
+  <div class="oss-grid">
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">📈</div>
+        <div>
+          <div class="oss-name">GammaGEX</div>
+          <div class="oss-stars">⭐ 8 · 2 forks</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        Python options analytics platform calculating 6 Greek-based momentum indicators for Indian markets.
+        Net Gamma Exposure, Delta-Weighted Volume Flow, Gamma Squeeze Detection, Vanna &amp; Charm Analysis,
+        IV Skew Momentum, and a unified Composite Momentum Score (0–100). Real-time CLI monitoring.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-py"></span> Python</span>
+        <a class="oss-link" href="https://github.com/aakash-code/GammaGEX" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">💹</div>
+        <div>
+          <div class="oss-name">OpenEquity</div>
+          <div class="oss-stars">⭐ 2 · 2 forks</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        Open-source Bloomberg alternative — AI-powered equity research platform democratizing $20,000+/yr
+        institutional tools. Financial model marketplace, collaborative editing, CFA curriculum integration,
+        real-time data from multiple sources.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-ts"></span> TypeScript + Python</span>
+        <a class="oss-link" href="https://github.com/aakash-code/openequity" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">🌲</div>
+        <div>
+          <div class="oss-name">PineTS</div>
+          <div class="oss-stars">Open Source</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        TypeScript transpiler and runtime bringing Pine Script to Node.js and browsers with 1:1 syntax
+        compatibility. 60+ technical analysis functions (SMA, EMA, RSI, MACD, Bollinger Bands),
+        real-time streaming, multi-timeframe support. Run indicators on your own infrastructure.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-ts"></span> TypeScript</span>
+        <a class="oss-link" href="https://github.com/aakash-code/PineTS" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">📡</div>
+        <div>
+          <div class="oss-name">OpenAlgo + OpenAlgo-Chart</div>
+          <div class="oss-stars">Open Source</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        Open-source algorithmic trading platform with real-time financial data visualisation.
+        API integrations for Indian brokers, workflow automation for strategy execution,
+        and a companion chart platform with streaming market data.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-py"></span> Python + TypeScript</span>
+        <a class="oss-link" href="https://github.com/aakash-code/openalgo" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">📦</div>
+        <div>
+          <div class="oss-name">NSEMine</div>
+          <div class="oss-stars">Open Source</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        Efficient Python library for scraping real-time and historical data of stocks, futures, options,
+        and indices from NSE Exchange. Reliable data pipeline foundation for trading and research tools.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-py"></span> Python</span>
+        <a class="oss-link" href="https://github.com/aakash-code/nsemine" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+    <div class="oss-card">
+      <div class="oss-header">
+        <div class="oss-icon">🤖</div>
+        <div>
+          <div class="oss-name">PyIndicators</div>
+          <div class="oss-stars">Built with Claude Code</div>
+        </div>
+      </div>
+      <p class="oss-desc">
+        Technical analysis indicator library built entirely with Claude Code — demonstrating systematic
+        AI-assisted development workflow. A practical example of using LLMs to build reusable,
+        well-structured financial tooling.
+      </p>
+      <div class="oss-footer">
+        <span class="oss-lang"><span class="lang-dot lang-py"></span> Python</span>
+        <a class="oss-link" href="https://github.com/aakash-code/pyindicators" target="_blank">View on GitHub →</a>
+      </div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── STACK ── -->
+<div id="stack" class="stack-section">
+  <div class="stack-inner">
+    <div class="section-label">Tech Stack</div>
+    <div class="section-title">Tools I work with daily</div>
+
+    <div class="stack-grid">
+      <div class="stack-group">
+        <h3>AI / LLMs</h3>
+        <div class="stack-items">
+          <div class="stack-item"><span class="si">🧠</span> Claude API (1.5yr prod)</div>
+          <div class="stack-item"><span class="si">💻</span> Claude Code CLI</div>
+          <div class="stack-item"><span class="si">🤖</span> OpenAI GPT-4o</div>
+          <div class="stack-item"><span class="si">✨</span> Google Gemini API</div>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <h3>Automation</h3>
+        <div class="stack-items">
+          <div class="stack-item"><span class="si">⚙️</span> Make (Integromat)</div>
+          <div class="stack-item"><span class="si">🔄</span> n8n</div>
+          <div class="stack-item"><span class="si">⚡</span> Zapier</div>
+          <div class="stack-item"><span class="si">💬</span> WhatsApp Business API</div>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <h3>Frontend</h3>
+        <div class="stack-items">
+          <div class="stack-item"><span class="si">⚛️</span> React / Next.js 14+</div>
+          <div class="stack-item"><span class="si">🔷</span> TypeScript</div>
+          <div class="stack-item"><span class="si">🎨</span> Tailwind CSS</div>
+          <div class="stack-item"><span class="si">📊</span> D3.js / Recharts</div>
+        </div>
+      </div>
+
+      <div class="stack-group">
+        <h3>Backend / Infra</h3>
+        <div class="stack-items">
+          <div class="stack-item"><span class="si">🐍</span> Python / FastAPI</div>
+          <div class="stack-item"><span class="si">🟢</span> Node.js</div>
+          <div class="stack-item"><span class="si">🗄️</span> PostgreSQL / MySQL / Redis</div>
+          <div class="stack-item"><span class="si">🐳</span> Docker / Vercel / CI/CD</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── EXPERIENCE ── -->
+<div id="experience" class="section">
+  <div class="section-label">Experience</div>
+  <div class="section-title">What I've built and where</div>
+  <p class="section-desc" style="margin-bottom: 36px;">4+ years delivering production AI systems for real organisations.</p>
+
+  <div class="timeline">
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2023 – present</div>
+      <div class="tl-title">Lead AI Developer — SGVP</div>
+      <div class="tl-sub">sgvp.app · Gujarat, India</div>
+      <div class="tl-desc">
+        Architected and built a 12-module AI Operating System for a 200,000+ contact organisation.
+        134,000+ lines of code shipped to production in 3 weeks using Claude Code. 50+ non-technical staff
+        onboarded with zero training required. Includes AI governance, role-based access, and daily
+        executive dashboards.
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2022 – 2023</div>
+      <div class="tl-title">AI &amp; Automation Developer — Nivas Realty</div>
+      <div class="tl-sub">Ahmedabad, India</div>
+      <div class="tl-desc">
+        LLM-powered call capture and follow-up system for 45+ agents. Claude API + WhatsApp Business API
+        integration eliminated manual CRM entry and saved agents 45–60 minutes daily.
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2021 – 2022</div>
+      <div class="tl-title">Full-Stack Developer — Freshmor &amp; Spoonly</div>
+      <div class="tl-sub">Remote</div>
+      <div class="tl-desc">
+        Designed and shipped two production platforms: Freshmor (B2B/B2C e-commerce, Next.js)
+        and Spoonly (manufacturing operations, inventory, billing). Owned UX end-to-end on both.
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2019 – present</div>
+      <div class="tl-title">Freelance AI Developer &amp; Automation Specialist</div>
+      <div class="tl-sub">Ahmedabad (remote clients globally)</div>
+      <div class="tl-desc">
+        Building AI-powered tools and automation systems for businesses across real estate, manufacturing,
+        and hospitality. Full ownership: requirements → design → build → deployment → training → iteration.
+      </div>
+    </div>
+
+    <div class="tl-item">
+      <div class="tl-dot"></div>
+      <div class="tl-period">2016 – 2019</div>
+      <div class="tl-title">Bachelor of Computer Application (BCA)</div>
+      <div class="tl-sub">Gujarat University</div>
+      <div class="tl-desc">Computer Science — software development, databases, algorithms.</div>
+    </div>
+
+  </div>
+</div>
+
+<!-- ── CONTACT ── -->
+<div class="contact-section">
+  <div class="contact-inner">
+    <div class="section-label" style="text-align:center;">Get in touch</div>
+    <div class="section-title" style="text-align:center; font-size: 2rem;">Let's build something</div>
+    <p style="color: var(--muted); margin-top: 12px;">
+      Open to full-time roles, freelance projects, and collaborations around AI tooling and automation.
+    </p>
+    <div class="contact-links">
+      <a class="contact-link" href="mailto:sheladiyaaakash123@gmail.com">
+        <span>✉️</span> sheladiyaaakash123@gmail.com
+      </a>
+      <a class="contact-link" href="https://github.com/aakash-code" target="_blank">
+        <span>💻</span> github.com/aakash-code
+      </a>
+      <a class="contact-link" href="tel:+919687331603">
+        <span>📞</span> +91 96873 31603
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- ── FOOTER ── -->
+<footer>
+  <p>Built by Aakash Sheladiya · Ahmedabad, India · Open to remote worldwide</p>
+</footer>
+
+</body>
+</html>
