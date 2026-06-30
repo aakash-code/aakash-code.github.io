@@ -77,6 +77,11 @@
 
 <!-- HERO -->
 <section id="top" class="relative min-h-screen flex flex-col items-center justify-center text-center px-6 pt-32 pb-24 overflow-hidden">
+  <!-- Optional hero background media: drop media/hero/hero.jpg (or hero.mp4) and it shows automatically. -->
+  <div id="hero-media" class="pointer-events-none absolute inset-0 -z-10 hidden">
+    <img id="hero-media-img" alt="" class="w-full h-full object-cover opacity-[0.18]" />
+    <div class="absolute inset-0 bg-gradient-to-b from-paper/40 via-paper/70 to-paper"></div>
+  </div>
   <div class="pointer-events-none absolute -top-32 left-1/2 -translate-x-1/2 w-[55rem] h-[55rem] rounded-full bg-clay-200/30 blur-[150px] animate-drift"></div>
   <div class="pointer-events-none absolute top-1/3 -left-24 w-[30rem] h-[30rem] rounded-full bg-clay-100/40 blur-[120px] animate-floaty"></div>
 
@@ -122,7 +127,7 @@
   <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-5 mt-12">
 
     <!-- SGVP -->
-    <a href="https://sgvp.app" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up">
+    <a href="https://sgvp.app" target="_blank" rel="noopener" data-media="sgvp" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">🏛️</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-600/10 text-emerald-700 border border-emerald-600/20 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>LIVE</span>
@@ -141,7 +146,7 @@
     </a>
 
     <!-- Freshmor -->
-    <a href="https://freshmor.in" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="50">
+    <a href="https://freshmor.in" target="_blank" rel="noopener" data-media="freshmor" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="50">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">🛒</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-600/10 text-emerald-700 border border-emerald-600/20 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>LIVE</span>
@@ -159,7 +164,7 @@
     </a>
 
     <!-- Spoonly -->
-    <a href="https://spoonly.in" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+    <a href="https://spoonly.in" target="_blank" rel="noopener" data-media="spoonly" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="100">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">🌿</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-600/10 text-emerald-700 border border-emerald-600/20 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>LIVE</span>
@@ -177,7 +182,7 @@
     </a>
 
     <!-- Kailor -->
-    <a href="https://kailorusa.com" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up">
+    <a href="https://kailorusa.com" target="_blank" rel="noopener" data-media="kailor" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">🛍️</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-emerald-600/10 text-emerald-700 border border-emerald-600/20 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-emerald-600"></span>LIVE</span>
@@ -195,7 +200,7 @@
     </a>
 
     <!-- OpenAlgo -->
-    <a href="https://github.com/aakash-code/openalgo" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="50">
+    <a href="https://github.com/aakash-code/openalgo" target="_blank" rel="noopener" data-media="openalgo" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="50">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">📡</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-clay-400/12 text-clay-600 border border-clay-400/25 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-clay-400"></span>CODE</span>
@@ -213,7 +218,7 @@
     </a>
 
     <!-- OpenEquity -->
-    <a href="https://github.com/aakash-code/openequity" target="_blank" rel="noopener" class="card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="100">
+    <a href="https://github.com/aakash-code/openequity" target="_blank" rel="noopener" data-media="openequity" class="project-card card-shadow group flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6 hover:-translate-y-1.5 hover:border-clay-300 transition duration-300" data-aos="fade-up" data-aos-delay="100">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">💹</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-clay-400/12 text-clay-600 border border-clay-400/25 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-clay-400"></span>CODE</span>
@@ -231,7 +236,7 @@
     </a>
 
     <!-- Nivas Realty — PRIVATE -->
-    <div class="card-shadow flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6" data-aos="fade-up">
+    <div data-media="nivas" class="project-card card-shadow flex flex-col rounded-2xl border border-ink/8 bg-paper-card p-6" data-aos="fade-up">
       <div class="flex items-start justify-between mb-3">
         <span class="text-2xl">🤖</span>
         <span class="px-2.5 py-1 rounded-full text-[10px] font-bold tracking-wide bg-ink/8 text-ink-muted border border-ink/15 inline-flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-ink-faint"></span>PRIVATE</span>
@@ -463,6 +468,21 @@
   Built by Aakash Sheladiya · Ahmedabad, India · Open to remote &amp; relocation worldwide
 </footer>
 
+<!-- ============ MEDIA LIGHTBOX (frontend + backend gallery + video) ============ -->
+<div id="lb" class="fixed inset-0 z-[300] hidden items-center justify-center bg-ink/85 backdrop-blur-md p-4 md:p-8">
+  <button id="lb-close" aria-label="Close" class="absolute top-4 right-5 text-paper-card/80 hover:text-paper-card text-3xl leading-none">✕</button>
+  <button id="lb-prev" aria-label="Previous" class="absolute left-3 md:left-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-paper-card/15 hover:bg-paper-card/30 text-paper-card text-2xl">‹</button>
+  <button id="lb-next" aria-label="Next" class="absolute right-3 md:right-6 top-1/2 -translate-y-1/2 w-11 h-11 rounded-full bg-paper-card/15 hover:bg-paper-card/30 text-paper-card text-2xl">›</button>
+  <div class="w-full max-w-5xl flex flex-col items-center gap-4">
+    <div id="lb-stage" class="w-full flex items-start justify-center rounded-xl overflow-y-auto bg-black/40 max-h-[78vh]"></div>
+    <div class="flex items-center justify-between w-full gap-4">
+      <div id="lb-caption" class="text-sm text-paper-card/85 font-medium"></div>
+      <div id="lb-counter" class="text-xs text-paper-card/55 font-mono shrink-0"></div>
+    </div>
+    <div id="lb-thumbs" class="flex gap-2 overflow-x-auto w-full pb-1"></div>
+  </div>
+</div>
+
 <!-- Scripts -->
 <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
 <script>
@@ -472,6 +492,165 @@
     const h = document.documentElement;
     bar.style.width = (h.scrollTop / (h.scrollHeight - h.clientHeight) * 100) + '%';
   }, { passive: true });
+</script>
+
+<script>
+/* ------------------------------------------------------------------
+   MEDIA MANIFEST
+   Drop files into github-pages/media/<slug>/ and they appear automatically.
+   Per project, the page probes for these and shows whatever exists:
+     cover.jpg                      → the card preview image (frontend hero)
+     frontend-1.jpg … frontend-6.jpg → "Frontend" screenshots in the gallery
+     backend-1.jpg  … backend-6.jpg  → "Backend / admin" screenshots in the gallery
+     demo.mp4                        → your screen-recording, plays in the gallery
+   .jpg / .jpeg / .png all work. Missing files are skipped silently.
+------------------------------------------------------------------ */
+const EXTS = ['jpg', 'jpeg', 'png', 'webp', 'gif'];
+
+// Kailor already has real captured assets with specific names — map them explicitly.
+const KAILOR = [
+  { kind: 'image', base: 'media/kailor', file: 'kailor-cover.png',     label: 'Storefront (frontend)', exact: true },
+  { kind: 'image', base: 'media/kailor', file: 'storefront-shop.gif',  label: 'Storefront — shop to cart', exact: true },
+  { kind: 'image', base: 'media/kailor', file: 'kailor-admin.png',     label: 'Admin dashboard (backend)', exact: true },
+  { kind: 'image', base: 'media/kailor', file: 'admin-tour.gif',       label: 'Admin — order fulfillment (backend)', exact: true },
+  { kind: 'image', base: 'media/kailor', file: 'feature-flags.gif',    label: 'Feature flags & RBAC (backend)', exact: true },
+  { kind: 'video', base: 'media/kailor', file: 'kailor-demo.mp4',      label: 'Full demo reel', exact: true },
+];
+
+// Projects with an explicit asset list use it; the rest auto-discover from media/<slug>/.
+const MEDIA = {
+  sgvp:       'media/sgvp',
+  freshmor:   'media/freshmor',
+  spoonly:    'media/spoonly',
+  kailor:     KAILOR,
+  openalgo:   'media/openalgo',
+  openequity: 'media/openequity',
+  nivas:      'media/nivas',
+};
+
+// Probe whether an image URL loads.
+function imgExists(url) {
+  return new Promise(res => {
+    const im = new Image();
+    im.onload = () => res(true);
+    im.onerror = () => res(false);
+    im.src = url;
+  });
+}
+// Probe a file via HEAD (used for video).
+async function fileExists(url) {
+  try { const r = await fetch(url, { method: 'HEAD' }); return r.ok; } catch { return false; }
+}
+// Find the first existing <name>.<ext>, trying common image extensions.
+async function firstExt(base, name) {
+  for (const ext of EXTS) {
+    const url = base + '/' + name + '.' + ext;
+    if (await imgExists(url)) return url;
+  }
+  return null;
+}
+
+// Auto-discover a folder: cover.* , frontend-1.. , backend-1.. , demo.mp4.
+// Sequential — stops at the first missing index so absent projects probe cheaply.
+async function discover(base) {
+  const items = [];
+  const cover = await firstExt(base, 'cover');
+  if (cover) items.push({ kind: 'image', src: cover, label: 'Overview' });
+  for (let i = 1; i <= 10; i++) { const u = await firstExt(base, 'frontend-' + i); if (!u) break; items.push({ kind: 'image', src: u, label: 'Frontend' }); }
+  for (let i = 1; i <= 10; i++) { const u = await firstExt(base, 'backend-' + i);  if (!u) break; items.push({ kind: 'image', src: u, label: 'Backend / admin' }); }
+  if (await fileExists(base + '/demo.mp4')) items.push({ kind: 'video', src: base + '/demo.mp4', label: 'Demo recording' });
+  return items;
+}
+
+// Resolve an explicit (Kailor-style) candidate to a concrete item if it exists.
+async function resolveExplicit(it) {
+  const url = it.base + '/' + it.file;
+  if (it.kind === 'video') return (await fileExists(url)) ? { kind: 'video', src: url, label: it.label } : null;
+  return (await imgExists(url)) ? { kind: 'image', src: url, label: it.label } : null;
+}
+
+// Build the gallery for one project from its config (string folder or explicit array).
+async function buildGallery(cfg) {
+  if (typeof cfg === 'string') return discover(cfg);
+  return (await Promise.all(cfg.map(resolveExplicit))).filter(Boolean);
+}
+
+const galleries = {}; // slug -> [resolved items]
+let lbItems = [], lbIndex = 0;
+const lb = document.getElementById('lb');
+const lbStage = document.getElementById('lb-stage');
+const lbCap = document.getElementById('lb-caption');
+const lbCounter = document.getElementById('lb-counter');
+const lbThumbs = document.getElementById('lb-thumbs');
+
+function renderLb() {
+  const it = lbItems[lbIndex];
+  lbStage.innerHTML = it.kind === 'video'
+    ? `<video src="${it.src}" controls autoplay playsinline class="w-full max-h-[78vh]"></video>`
+    : `<img src="${it.src}" alt="" class="w-full h-auto block" />`;
+  lbCap.textContent = it.label || '';
+  lbCounter.textContent = (lbIndex + 1) + ' / ' + lbItems.length;
+  lbThumbs.innerHTML = lbItems.map((m, i) => `
+    <button data-i="${i}" class="shrink-0 w-20 h-14 rounded-md overflow-hidden border-2 ${i === lbIndex ? 'border-clay-400' : 'border-transparent opacity-60 hover:opacity-100'}">
+      ${m.kind === 'video' ? '<div class=\"w-full h-full flex items-center justify-center bg-black/60 text-paper-card\">▶</div>' : `<img src="${m.src}" alt="" class="w-full h-full object-cover" />`}
+    </button>`).join('');
+  lbThumbs.querySelectorAll('button').forEach(b => b.onclick = () => { lbIndex = +b.dataset.i; renderLb(); });
+}
+function openLb(slug, start = 0) {
+  lbItems = galleries[slug]; if (!lbItems || !lbItems.length) return;
+  lbIndex = start; lb.classList.remove('hidden'); lb.classList.add('flex');
+  document.body.style.overflow = 'hidden'; renderLb();
+}
+function closeLb() {
+  lb.classList.add('hidden'); lb.classList.remove('flex');
+  lbStage.innerHTML = ''; document.body.style.overflow = '';
+}
+document.getElementById('lb-close').onclick = closeLb;
+document.getElementById('lb-prev').onclick = () => { lbIndex = (lbIndex - 1 + lbItems.length) % lbItems.length; renderLb(); };
+document.getElementById('lb-next').onclick = () => { lbIndex = (lbIndex + 1) % lbItems.length; renderLb(); };
+lb.addEventListener('click', e => { if (e.target === lb) closeLb(); });
+document.addEventListener('keydown', e => {
+  if (lb.classList.contains('hidden')) return;
+  if (e.key === 'Escape') closeLb();
+  if (e.key === 'ArrowLeft') document.getElementById('lb-prev').click();
+  if (e.key === 'ArrowRight') document.getElementById('lb-next').click();
+});
+
+// Insert a cover image at the top of a card and wire it to the gallery.
+function decorateCard(card, slug, items) {
+  const cover = document.createElement(card.tagName === 'A' ? 'div' : 'div');
+  cover.className = 'project-cover relative block -mx-6 -mt-6 mb-5 aspect-[16/10] overflow-hidden rounded-t-2xl bg-paper-warm cursor-zoom-in group/cv';
+  const first = items[0];
+  const hasVideo = items.some(m => m.kind === 'video');
+  cover.innerHTML = `
+    <img src="${first.src}" alt="" class="w-full h-full object-cover object-top transition duration-500 group-hover/cv:scale-[1.04]" />
+    <span class="absolute bottom-2 right-2 inline-flex items-center gap-1.5 rounded-full bg-ink/70 text-paper-card text-[11px] font-medium px-2.5 py-1 backdrop-blur">
+      ${hasVideo ? '▶ ' : '🖼 '}${items.length} ${hasVideo ? 'media' : 'shots'}
+    </span>`;
+  cover.addEventListener('click', e => { e.preventDefault(); e.stopPropagation(); openLb(slug, 0); });
+  card.insertBefore(cover, card.firstChild);
+}
+
+// Boot: probe every project's media and decorate cards that have any.
+(async function initMedia() {
+  // Hero background
+  for (const ext of ['jpg', 'jpeg', 'png', 'webp']) {
+    if (await imgExists('media/hero/hero.' + ext)) {
+      const wrap = document.getElementById('hero-media');
+      document.getElementById('hero-media-img').src = 'media/hero/hero.' + ext;
+      wrap.classList.remove('hidden');
+      break;
+    }
+  }
+  // Project galleries
+  await Promise.all(Object.entries(MEDIA).map(async ([slug, cfg]) => {
+    const resolved = await buildGallery(cfg);
+    if (!resolved.length) return;
+    galleries[slug] = resolved;
+    const card = document.querySelector('.project-card[data-media="' + slug + '"]');
+    if (card) decorateCard(card, slug, resolved);
+  }));
+})();
 </script>
 
 </body>
